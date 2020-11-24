@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "olivier-levy": {
+      "hosting": {
+        "olivier-levy": [
+          "olivier-levy"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "olivier-levy"
+  }
+}
