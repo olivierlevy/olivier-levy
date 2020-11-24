@@ -1,0 +1,16 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/documentation": true,
+    "**/src/assets/ckeditor": true
+  },
+  "workbench.colorCustomizations": {
+    "window.activeBorder": "#fed136",
+    "window.inactiveBorder": "#fbb03b"
+  }
+}
