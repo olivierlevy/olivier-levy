@@ -1,34 +1,66 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LoggedInGuard, NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { HttpClientModule } from '@angular/common/http';
-import { translocoConfig, translocoLoader } from './transloco.loader';
-import { TranslocoModule } from '@ngneat/transloco';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+import { environment } from '../environments/environment';
+import { AppComponent } from './app.component';
+import { MaterialModule } from './material/material.module';
+import { LoginComponent } from './pages/login/login.component';
+import { HomeComponent } from './pages/home/home.component';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent, canActivate: [LoggedInGuard] },
+  { path: 'login', component: LoginComponent },
+];
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'fr-FR',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (http: HttpClient) =>
+          new TranslateHttpLoader(http, '/assets/i18n/', '.json'),
+        deps: [HttpClient],
+      },
+    }),
+    RouterModule.forRoot(routes),
+    MaterialModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
-    HttpClientModule,
-    TranslocoModule,
+    NgxAuthFirebaseUIModule.forRoot(
+      environment.firebaseConfig,
+      () => undefined,
+      {
+        toastMessageOnAuthSuccess: false,
+        authGuardFallbackURL: 'login',
+        authGuardLoggedInURL: 'login',
+        enableFirestoreSync: true,
+        enableEmailVerification: true,
+        guardProtectedRoutesUntilEmailIsVerified: true,
+      }
+    ),
+    FlexLayoutModule,
   ],
-  providers: [translocoConfig, translocoLoader],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
