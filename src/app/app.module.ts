@@ -7,6 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { HttpClientModule } from '@angular/common/http';
+import { translocoConfig, translocoLoader } from './transloco.loader';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,8 +23,12 @@ import { AngularFireModule } from '@angular/fire';
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule,
+    HttpClientModule,
+    TranslocoModule,
   ],
-  providers: [],
+  providers: [translocoConfig, translocoLoader],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
