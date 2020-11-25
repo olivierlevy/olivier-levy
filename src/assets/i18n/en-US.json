@@ -28,7 +28,10 @@
     "resetPasswordActionButtonText": "Reset",
     "resetPasswordInstructionsText": "Reset requested. Check your e-mail instructions.",
     "emailConfirmationTitle": "Confirm your e-mail address!",
-    "emailConfirmationText": "A confirmation e-mail has been sent to you. Check your inbox and click on the link 'Confirm my e-mail' to confirm your e-mail address."
+    "emailConfirmationText": "A confirmation e-mail has been sent to you. Check your inbox and click on the link 'Confirm my e-mail' to confirm your e-mail address.",
+    "orLabelText": "or",
+    "dontHaveAnAccountText": "Don't have an account?",
+    "createAccountButtonText": "Create an account"
   },
   "home": "Home",
   "profile": "Profile"

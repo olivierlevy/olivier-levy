@@ -7,17 +7,21 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$olivier-levy-primary: mat-palette($mat-indigo);
-$olivier-levy-accent: mat-palette($mat-pink, A200, A100, A400);
+$light-primary: mat-palette($mat-grey, A400, A200, A700);
+$dark-primary: mat-palette($mat-grey, 800, 700, 900);
+$accent: mat-palette($mat-orange, A200, A100, A400);
 // The warn palette is optional (defaults to red).
-$olivier-levy-warn: mat-palette($mat-red);
+$warn: mat-palette($mat-red);
 // Create the theme object (a Sass map containing all of the palettes).
-$olivier-levy-theme: mat-light-theme(
-  $olivier-levy-primary,
-  $olivier-levy-accent,
-  $olivier-levy-warn
-);
+$light-theme: mat-light-theme($light-primary, $accent, $warn);
+$dark-theme: mat-dark-theme($dark-primary, $accent, $warn);
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($olivier-levy-theme);
+@include angular-material-theme($dark-theme);
+.light-theme {
+  @include angular-material-theme($light-theme);
+}
+.dark-theme {
+  @include angular-material-theme($dark-theme);
+}

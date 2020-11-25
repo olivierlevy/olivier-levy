@@ -28,7 +28,10 @@
     "resetPasswordActionButtonText": "Réinitialiser",
     "resetPasswordInstructionsText": "Réinitialisation demandée. Vérifiez vos instructions par e-mail.",
     "emailConfirmationTitle": "Confirmez votre adresse email!",
-    "emailConfirmationText": "Un email de confirmation vous a été envoyé. Vérifiez votre boîte de réception et cliquez sur le lien «Confirmer mon e-mail» pour confirmer votre adresse e-mail."
+    "emailConfirmationText": "Un email de confirmation vous a été envoyé. Vérifiez votre boîte de réception et cliquez sur le lien «Confirmer mon e-mail» pour confirmer votre adresse e-mail.",
+    "orLabelText": "ou",
+    "dontHaveAnAccountText": "Pas encore de compte ?",
+    "createAccountButtonText": "Créez un compte"
   },
   "home": "Accueil",
   "profile": "Profil"
